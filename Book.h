@@ -6,30 +6,15 @@
 class Book : public Item {
 public:
     Book();
+    Book(string name, string description, int id, string title, string author, string copyrightDate);
 
-    string getTitle() const {
-        return title;
-    }
+    string getTitle() const;
+    string getAuthor() const;
+    string getCopyrightDate() const;
 
-    string getAuthor() const {
-        return author;
-    }
-
-    string getCopyrightDate() const {
-        return copyrightDate;
-    }
-
-    void setTitle(const string& title) {
-        this->title = title;
-    }
-
-    void setAuthor(const string& author) {
-        this->author = author;
-    }
-
-    void setCopyrightDate(const string& copyrightDate) {
-        this->copyrightDate = copyrightDate;
-    }
+    virtual void setTitle(const string& title);
+    void setAuthor(const string& author);
+    void setCopyrightDate(const string& copyrightDate);
 
     friend ostream& operator<<(ostream& out, const Book& obj);
 

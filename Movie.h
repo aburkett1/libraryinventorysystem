@@ -7,30 +7,15 @@
 class Movie : public Item {
 public:
     Movie();
+    Movie(string name, string description, int id, string title, string director, vector<string> *mainActors);
 
-    string getTitle() const {
-        return title;
-    }
+    string getTitle() const;
+    string getDirector() const;
+    vector<string> getMainActors() const;
 
-    string getDirector() const {
-        return director;
-    }
-
-    vector<string> getMainActors() const {
-        return *mainActors;
-    }
-
-    void setTitle(const string& title) {
-        this->title = title;
-    }
-
-    void setDirector(const string& director) {
-        this->director = director;
-    }
-
-    void setMainActors(vector<string> *mainActors) {
-        this->mainActors = mainActors;
-    }
+    void setTitle(const string& title);
+    void setDirector(const string& director);
+    void setMainActors(vector<string> *mainActors);
 
     friend ostream& operator<<(ostream& out, const Movie& obj);
 

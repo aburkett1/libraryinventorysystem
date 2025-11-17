@@ -3,11 +3,14 @@
 
 #include "Item.h"
 
-static const int MAX_COMPARTMENT_SIZE = 15;
-
 class Shelf {
+private:
+    static const int MAX_COMPARTMENT_SIZE = 15;
+
 public:
-    Shelf();
+    Item* compartments[MAX_COMPARTMENT_SIZE];
+
+    Shelf() {};
 
     Item*& operator[](int index) {
         return compartments[index];
@@ -16,8 +19,7 @@ public:
     Item* operator[](int index) const {
         return compartments[index];
     }
-private:
-    Item* compartments[MAX_COMPARTMENT_SIZE];
+
 };
 
 #endif

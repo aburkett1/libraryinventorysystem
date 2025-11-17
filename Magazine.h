@@ -6,25 +6,16 @@
 class Magazine : public Item {
 public:
     Magazine();
+    Magazine(string name, string description, int id, string edition, string title);
 
-    string getEdition() const {
-        return edition;
-    }
+    string getEdition() const;
+    string getTitle() const;
 
-    string getTitle() const {
-        return title;
-    }
-
-    void setEdition(const string& edition) {
-        this->edition = edition;
-    }
-
-    void setTitle(const string& title) {
-        this->title = title;
-    }
-
+    void setEdition(const string& edition);
+    void setTitle(const string& title);
 
     friend ostream& operator<<(ostream& out, const Magazine& obj);
+
 private:
     string edition;
     string title;
