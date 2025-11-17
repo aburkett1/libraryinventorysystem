@@ -1,0 +1,80 @@
+#include "UnitTests.h"
+
+void testAccessItemByBracket() {
+
+}
+
+void testAddItemByBracket() {
+
+}
+
+
+void testAddItemMethod() {
+    // Create Library
+    LibraryStorage library = LibraryStorage();
+    library.addShelves(2);
+
+    // Create Item
+    Book* testBook = new Book("Test Name", "Test Description", 500, "Test Title", "Test Author", "01/01/2025");
+
+    // Add Item
+    library.addItem(testBook, 0, 5);
+
+    // Test to see if item is there.
+    if (library[0][5]->getId() == 500)
+    {
+        cout << "testAddItemMethod: PASS" << endl;
+    }
+    else
+    {
+        cout << "testAddItemMethod: FAIL" << endl;
+    }
+}
+
+void testAddItemToFilledLocation() {
+
+}
+
+void testAddItemToOutOfBounds() {
+
+}
+
+
+void testCheckInMethod() {
+
+}
+
+void testCheckInItemThatsNotCheckedOut() {
+
+}
+
+
+void testCheckOutMethod() {
+
+}
+
+void testCheckOutItemThatsNotCheckedIn() {
+
+}
+
+
+void testPrintCheckedInMethod() {
+
+}
+
+void testPrintCheckedOutMethod() {
+
+}
+
+
+void testSwapItemAndItem() {
+
+}
+
+void testSwapItemAndNothing() {
+
+}
+
+void testSwapNothingAndNothing() {
+
+}
