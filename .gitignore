@@ -1,3 +1,8 @@
+# Files without extensions
+*
+!*.*
+!*/
+
 # Prerequisites
 *.d
 
@@ -39,3 +44,24 @@
 
 # debug information files
 *.dwo
+
+# vscode temp files
+tempCodeRunnerFile.*
+
+# vscode template
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+!*.code-workspace
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+# MAC
+.DS_Store
+
+# Text Files
+*.txt
