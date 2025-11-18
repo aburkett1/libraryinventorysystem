@@ -10,6 +10,7 @@ private:
 public:
     Compartment* compartments[MAX_COMPARTMENT_SIZE];
 
+public:
     Shelf() {};
     ~Shelf();
 

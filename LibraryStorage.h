@@ -4,9 +4,10 @@
 #include "Shelf.h"
 
 class LibraryStorage {
-public:
+private:
     vector<Shelf*> storage;
 
+public:
     LibraryStorage() {};
     ~LibraryStorage();
 
