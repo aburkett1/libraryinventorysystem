@@ -6,7 +6,6 @@
 class LibraryStorage {
 public:
     vector<Shelf*> storage;
-    vector<Compartment*> checkedOutItems;
 
     LibraryStorage() {};
     ~LibraryStorage();

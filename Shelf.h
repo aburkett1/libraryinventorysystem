@@ -13,13 +13,8 @@ public:
     Shelf() {};
     ~Shelf();
 
-    Item*& operator[](int index) {
-        return compartments[index]->getItem();
-    }
-    
-    Item* operator[](int index) const {
-        return compartments[index]->getItem();
-    }
+    Item*& operator[](int index);
+    Item* operator[](int index) const;
 
 };
 

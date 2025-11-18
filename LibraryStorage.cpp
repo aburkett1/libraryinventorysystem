@@ -1,5 +1,9 @@
 #include "LibraryStorage.h"
 
+LibraryStorage::~LibraryStorage() {
+
+}
+
 void LibraryStorage::addItem(Item* newItem, int shelfLocation, int compartmentLocation) {
     (*this)[shelfLocation][compartmentLocation] = newItem;
 }
