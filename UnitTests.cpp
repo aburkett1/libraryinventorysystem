@@ -10,18 +10,21 @@ void testAddItemByBracket() {
 
 
 void testAddItemMethod() {
+    // Test Phrase
+    string testPhrase = "Book for testing testAddItemMethod";
+    
     // Create Library
     LibraryStorage library = LibraryStorage();
     library.addShelves(2);
 
     // Create Item
-    Book* testBook = new Book("Test Name", "Test Description", 500, "Test Title", "Test Author", "01/01/2025");
+    Book* testBook = new Book("Test Name", testPhrase, "Test Title", "Test Author", "01/01/2025");
 
     // Add Item
     library.addItem(testBook, 0, 5);
 
     // Test to see if item is there.
-    if (library[0][5]->getId() == 500)
+    if (library[0][5]->getDescription() == testPhrase)
     {
         cout << "testAddItemMethod: PASS" << endl;
     }

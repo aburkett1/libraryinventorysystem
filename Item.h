@@ -8,7 +8,7 @@ using namespace std;
 class Item {
 public:
     Item();
-    Item(string name, string description, int id);
+    Item(string name, string description);
     virtual ~Item() {}
 
     string getName() const;
@@ -17,7 +17,6 @@ public:
 
     void setName(const string& name);
     void setDescription(const string& description);
-    void setId(int id);
 
     virtual void setTitle(const string& title) = 0;
 
@@ -27,6 +26,7 @@ protected:
     string name;
     string description;
     int id;
+    inline static int nextId = 0;
 };
 
 #endif

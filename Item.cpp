@@ -3,13 +3,13 @@
 Item::Item() {
     name = "";
     description = "";
-    id = 0;
+    id = nextId++;
 }
 
-Item::Item(string name, string description, int id) {
+Item::Item(string name, string description) {
     this->name = name;
     this->description = description;
-    this->id = id;
+    this->id = nextId++;
 }
 
 string Item::getName() const {
@@ -30,10 +30,6 @@ void Item::setName(const string& name) {
 
 void Item::setDescription(const string& description) {
     this->description = description;
-}
-
-void Item::setId(int id) {
-    this->id = id;
 }
 
 ostream& operator<<(ostream& out, const Item& obj) {

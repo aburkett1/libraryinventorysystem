@@ -7,7 +7,7 @@
 class Movie : public Item {
 public:
     Movie();
-    Movie(string name, string description, int id, string title, string director, vector<string> *mainActors);
+    Movie(string name, string description, string title, string director, vector<string> *mainActors);
 
     string getTitle() const;
     string getDirector() const;
