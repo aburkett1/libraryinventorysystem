@@ -8,10 +8,11 @@
 #include "Magazine.h"
 
 class LibraryStorage {
-public:
+private:
     vector<Shelf*> storage;
     vector<Item*> checkedOutItems;
 
+public:
     LibraryStorage() {};
 
     void addItem(Item* newItem, int shelfLocation, int compartmentLocation);

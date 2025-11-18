@@ -6,10 +6,9 @@
 class Shelf {
 private:
     static const int MAX_COMPARTMENT_SIZE = 15;
-
-public:
     Item* compartments[MAX_COMPARTMENT_SIZE];
 
+public:
     Shelf() {};
 
     Item*& operator[](int index) {
