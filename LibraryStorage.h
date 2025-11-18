@@ -2,18 +2,14 @@
 #define LIBRARYSTORAGE_H_
 
 #include "Shelf.h"
-#include "Item.h"
-#include "Book.h"
-#include "Movie.h"
-#include "Magazine.h"
 
 class LibraryStorage {
 private:
     vector<Shelf*> storage;
-    vector<Item*> checkedOutItems;
 
 public:
     LibraryStorage() {};
+    ~LibraryStorage();
 
     void addItem(Item* newItem, int shelfLocation, int compartmentLocation);
     void addShelves(int amount);

@@ -2,6 +2,7 @@
 #define ITEM_H_
 
 #include <iostream>
+#include <string>
 using namespace std;
 
 class Item {
@@ -12,14 +13,10 @@ public:
     string getName() const;
     string getDescription() const;
     int getId() const;
-    string getPerson() const;
-    string getDueDate() const;
 
     void setName(const string& name);
     void setDescription(const string& description);
     void setId(int id);
-    void setPerson(const string& person);
-    void setDueDate(const string& dueDate);
 
     virtual void setTitle(const string& title) = 0;
 
@@ -29,8 +26,6 @@ protected:
     string name;
     string description;
     int id;
-    string person;
-    string dueDate;
 };
 
 #endif

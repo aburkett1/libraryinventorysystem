@@ -1,5 +1,9 @@
 #include "LibraryStorage.h"
 
+LibraryStorage::~LibraryStorage() {
+
+}
+
 void LibraryStorage::addItem(Item* newItem, int shelfLocation, int compartmentLocation) {
     (*this)[shelfLocation][compartmentLocation] = newItem;
 }
@@ -20,6 +24,9 @@ void LibraryStorage::printCheckedOut() {
 
 }
 
+// Check for two items existing
+// Should not swap if there is only one item
+// Should not swap if there are no items
 void LibraryStorage::swapItems(int item1Shelf, int item1Compartment, int item2Shelf, int item2Compartment) {
 
 }
