@@ -9,6 +9,7 @@ class Item {
 public:
     Item();
     Item(string name, string description, int id);
+    virtual ~Item() {}
 
     string getName() const;
     string getDescription() const;

@@ -16,7 +16,7 @@ public:
     string getPerson() const;
     string getDueDate() const;
 
-    void setItem(const Item*& item);
+    void setItem(Item*& item);
     void setPerson(const string& person);
     void setDueDate(const string& dueDate);
 

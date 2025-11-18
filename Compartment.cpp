@@ -1,5 +1,11 @@
 #include "Compartment.h"
 
+Compartment::Compartment() {
+    item = nullptr;
+    person = "";
+    dueDate = "";
+}
+
 Compartment::~Compartment() {
     delete item;
 }
@@ -26,6 +32,10 @@ string Compartment::getDueDate() const {
 /********************************************************
     MARK: SETTERS
 ********************************************************/
+void Compartment::setItem(Item*& item) {
+    this->item = item;
+}
+
 void Compartment::setPerson(const string& person) {
     this->person = person;
 }
