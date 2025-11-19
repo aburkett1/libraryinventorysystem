@@ -12,10 +12,10 @@ Shelf::~Shelf() {
     }
 }
 
-Item*& Shelf::operator[](int index) {
-    return compartments[index]->getItem();
+Compartment*& Shelf::operator[](int index) {
+    return compartments[index];
 }
     
-Item* Shelf::operator[](int index) const {
-    return compartments[index]->getItem();
+Compartment* Shelf::operator[](int index) const {
+    return compartments[index];
 }
