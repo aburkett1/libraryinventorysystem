@@ -14,7 +14,7 @@ public:
     void setEdition(const string& edition);
     void setTitle(const string& title);
 
-    friend ostream& operator<<(ostream& out, const Magazine& obj);
+    friend ostream& operator<<(ostream& out, const Magazine& magazine);
 
 private:
     string edition;

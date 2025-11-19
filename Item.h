@@ -17,6 +17,8 @@ public:
     void setDescription(const string& description);
     virtual void setTitle(const string& title) = 0;
 
+    bool operator==(Item& other);
+
 protected:
     string description;
     int id;

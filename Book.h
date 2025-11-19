@@ -16,7 +16,7 @@ public:
     void setAuthor(const string& author);
     void setCopyrightDate(const string& copyrightDate);
 
-    friend ostream& operator<<(ostream& out, const Book& obj);
+    friend ostream& operator<<(ostream& out, const Book& book);
 
 private:
     string title;

@@ -22,3 +22,7 @@ int Item::getId() const {
 void Item::setDescription(const string& description) {
     this->description = description;
 }
+
+bool Item::operator==(Item& other) {
+    return id == other.id ? true : false;
+}

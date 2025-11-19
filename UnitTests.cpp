@@ -5,6 +5,7 @@ void testAccessCompartmentByBracket() {
     LibraryStorage library = LibraryStorage();
     library.addShelves(2);
 
+    // Test Type Match
     if (typeid(library[0][2]) == typeid(Compartment*))
     {
         cout << "testAccessCompartmentByBracket: PASS" << endl;
@@ -31,7 +32,7 @@ void testAddItemMethod() {
     Book* bookAtLocation = dynamic_cast<Book*>(library[0][5]->getItem());
 
     // Test to see if item is there.
-    if (testBook == bookAtLocation)
+    if (*testBook == *bookAtLocation)
     {
         cout << "testAddItemMethod: PASS" << endl;
     }

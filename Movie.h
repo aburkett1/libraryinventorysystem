@@ -17,7 +17,7 @@ public:
     void setDirector(const string& director);
     void setMainActors(vector<string> *mainActors);
 
-    friend ostream& operator<<(ostream& out, const Movie& obj);
+    friend ostream& operator<<(ostream& out, const Movie& movie);
 
 private:
     string title;
