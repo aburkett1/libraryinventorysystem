@@ -6,6 +6,12 @@ Compartment::Compartment() {
     dueDate = "";
 }
 
+Compartment::Compartment(const Compartment& other) {
+    this->item = other.item;
+    this->person = other.person;
+    this->dueDate = other.dueDate;
+}
+
 Compartment::~Compartment() {
     delete item;
 }
@@ -29,6 +35,10 @@ string Compartment::getDueDate() const {
     return dueDate;
 }
 
+bool Compartment::empty() const {
+    return item == nullptr;
+}
+
 /********************************************************
     MARK: SETTERS
 ********************************************************/
@@ -42,4 +52,17 @@ void Compartment::setPerson(const string& person) {
 
 void Compartment::setDueDate(const string& dueDate) {
     this->dueDate = dueDate;
+}
+
+/********************************************************
+    MARK: OPERATORS
+********************************************************/
+Compartment& Compartment::operator=(const Compartment& rightside) {
+    if (this != &rightside) {
+        this->item = rightside.item;
+        this->person = rightside.person;
+        this->dueDate = rightside.dueDate;
+    }
+    
+    return *this;
 }

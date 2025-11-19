@@ -9,18 +9,21 @@
 class Compartment {
 public:
     Compartment();
+    Compartment(const Compartment& other);
     ~Compartment();
 
     Item*& getItem();
     Item* getItem() const;
     string getPerson() const;
     string getDueDate() const;
+    bool empty() const;
 
     void setItem(Item*& item);
     void setPerson(const string& person);
     void setDueDate(const string& dueDate);
 
     friend ostream& operator<<(ostream& out, const Item& obj);
+    Compartment& operator=(const Compartment& rightside);
 
 protected:
     Item *item;

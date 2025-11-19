@@ -24,7 +24,7 @@ void testAddItemMethod() {
     library.addItem(testBook, 0, 5);
 
     // Test to see if item is there.
-    if (library[0][5]->getDescription() == testPhrase)
+    if (library[0][5]->getItem()->getDescription() == testPhrase)
     {
         cout << "testAddItemMethod: PASS" << endl;
     }

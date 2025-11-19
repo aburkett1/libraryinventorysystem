@@ -19,13 +19,8 @@ public:
     void printCheckedOut();
     void swapItems(int item1Shelf, int item1Compartment, int item2Shelf, int item2Compartment);
 
-    Shelf& operator[](int index) {
-        return *storage[index];
-    }
-
-    Shelf& operator[](int index) const {
-        return *storage[index];
-    }
+    Shelf& operator[](int index);
+    Shelf& operator[](int index) const;
 };
 
 #endif

@@ -12,9 +12,8 @@ public:
     Shelf();
     ~Shelf();
 
-    Item*& operator[](int index);
-    Item* operator[](int index) const;
-
+    Compartment*& operator[](int index);
+    Compartment* operator[](int index) const;
 };
 
 #endif
