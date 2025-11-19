@@ -5,8 +5,8 @@ Magazine::Magazine() {
     title = "";
 }
 
-Magazine::Magazine(string name, string description, string edition, string title):
-Item(name, description) {
+Magazine::Magazine(string title, string description, string edition):
+Item(description) {
     this->edition = edition;
     this->title = title;
 }

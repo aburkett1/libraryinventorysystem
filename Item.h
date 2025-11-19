@@ -8,22 +8,16 @@ using namespace std;
 class Item {
 public:
     Item();
-    Item(string name, string description);
+    Item(string description);
     virtual ~Item() {}
 
-    string getName() const;
     string getDescription() const;
     int getId() const;
 
-    void setName(const string& name);
     void setDescription(const string& description);
-
     virtual void setTitle(const string& title) = 0;
 
-    friend ostream& operator<<(ostream& out, const Item& obj);
-
 protected:
-    string name;
     string description;
     int id;
     inline static int nextId = 0;

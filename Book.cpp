@@ -6,8 +6,8 @@ Book::Book() {
     copyrightDate = "";
 }
 
-Book::Book(string name, string description, string title, string author, string copyrightDate):
-Item(name, description) {
+Book::Book(string title, string description, string author, string copyrightDate):
+Item(description) {
     this->title = title;
     this->author = author;
     this->copyrightDate = copyrightDate;

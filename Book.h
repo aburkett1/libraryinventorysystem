@@ -6,7 +6,7 @@
 class Book : public Item {
 public:
     Book();
-    Book(string name, string description, string title, string author, string copyrightDate);
+    Book(string title, string description, string author, string copyrightDate);
 
     string getTitle() const;
     string getAuthor() const;

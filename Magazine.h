@@ -6,7 +6,7 @@
 class Magazine : public Item {
 public:
     Magazine();
-    Magazine(string name, string description, string edition, string title);
+    Magazine(string title, string description, string edition);
 
     string getEdition() const;
     string getTitle() const;

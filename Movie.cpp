@@ -6,8 +6,8 @@ Movie::Movie() {
     mainActors = nullptr;
 }
 
-Movie::Movie(string name, string description, string title, string director, vector<string> *mainActors):
-Item(name, description) {
+Movie::Movie(string title, string description, string director, vector<string> *mainActors):
+Item(description) {
     this->title = title;
     this->director = director;
     this->mainActors = mainActors;
