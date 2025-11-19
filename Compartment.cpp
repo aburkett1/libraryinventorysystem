@@ -57,6 +57,52 @@ void Compartment::setDueDate(const string& dueDate) {
 /********************************************************
     MARK: OPERATORS
 ********************************************************/
+ostream& operator<<(ostream& out, const Compartment& compartment) {
+    // Variables
+    const int colWidth = 7;
+
+    // Cast Item
+    Item* item = compartment.getItem();
+    Book* book = dynamic_cast<Book*>(item);
+    Magazine* magazine = dynamic_cast<Magazine*>(item);
+    Movie* movie = dynamic_cast<Movie*>(item);
+
+    // Output
+    out << left;
+
+    if (book)
+    {
+        out << setw(colWidth) << "ID: " << book->getId() << endl;
+        out << setw(colWidth) << "Title: " << book->getTitle() << endl;
+    }
+    else if (magazine)
+    {
+        out << setw(colWidth) << "ID: " << magazine->getId() << endl;
+        out << setw(colWidth) << "Title: " << magazine->getTitle() << endl;
+    }
+    else if (movie)
+    {
+        out << setw(colWidth) << "ID: " << movie->getId() << endl;
+        out << setw(colWidth) << "Title: " << movie->getTitle() << endl;
+    }
+
+    out << endl;
+
+    if (compartment.getPerson() != "")
+    {
+        out << "Item checked out by " << compartment.getPerson() << ".\n";
+        out << "Due Date: " << compartment.getDueDate() << ".\n";
+    }
+    else
+    {
+        out << "Item checked in.\n";
+    }
+
+    out << right;
+
+    return out;
+}
+
 Compartment& Compartment::operator=(const Compartment& rightside) {
     if (this != &rightside) {
         this->item = rightside.item;

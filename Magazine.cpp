@@ -28,7 +28,18 @@ void Magazine::setTitle(const string& title) {
 }
 
 
-ostream& operator<<(ostream& out, const Magazine& obj) {
+ostream& operator<<(ostream& out, const Magazine& magazine) {
+    // Variables
+    const int colWidth = 9;
 
+    // Output
+    out << left;
+    out << setw(colWidth) << "ID: " << magazine.id << endl;
+    out << setw(colWidth) << "Title: " << magazine.title << endl;
+    out << setw(colWidth) << "Edition: " << magazine.edition << endl << endl;
+    out << setw(colWidth) << "Description: " << endl
+        << magazine.description << endl;
+    out << right;
+    
     return out;
 }

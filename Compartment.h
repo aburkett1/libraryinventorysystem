@@ -22,7 +22,7 @@ public:
     void setPerson(const string& person);
     void setDueDate(const string& dueDate);
 
-    friend ostream& operator<<(ostream& out, const Item& obj);
+    friend ostream& operator<<(ostream& out, const Compartment& compartment);
     Compartment& operator=(const Compartment& rightside);
 
 protected:

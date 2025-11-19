@@ -37,7 +37,19 @@ void Book::setCopyrightDate(const string& copyrightDate) {
     this->copyrightDate = copyrightDate;
 }
 
-ostream& operator<<(ostream& out, const Book& obj) {
+ostream& operator<<(ostream& out, const Book& book) {
+    // Variables
+    const int colWidth = 16;
+
+    // Output
+    out << left;
+    out << setw(colWidth) << "ID: " << book.id << endl;
+    out << setw(colWidth) << "Title: " << book.title << endl;
+    out << setw(colWidth) << "Author: " << book.author << endl;
+    out << setw(colWidth) << "Copyright Date: " << book.copyrightDate << endl << endl;
+    out << setw(colWidth) << "Description: " << endl
+        << book.description << endl;
+    out << right;
 
     return out;
 }
