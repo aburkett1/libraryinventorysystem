@@ -10,8 +10,7 @@
 // =============================================================================
 int main()
 {
-    testAccessItemByBracket();
-    testAddItemByBracket();
+    testAccessCompartmentByBracket();
 
     testAddItemMethod();
     testAddItemToFilledLocation();

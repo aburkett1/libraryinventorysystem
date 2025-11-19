@@ -1,11 +1,18 @@
 #include "UnitTests.h"
 
-void testAccessItemByBracket() {
+void testAccessCompartmentByBracket() {
+    // Create Library
+    LibraryStorage library = LibraryStorage();
+    library.addShelves(2);
 
-}
-
-void testAddItemByBracket() {
-
+    if (typeid(library[0][2]) == typeid(Compartment*))
+    {
+        cout << "testAccessCompartmentByBracket: PASS" << endl;
+    }
+    else
+    {
+        cout << "testAccessCompartmentByBracket: FAIL" << endl;
+    }
 }
 
 

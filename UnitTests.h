@@ -2,11 +2,11 @@
 #define UNITTESTS_H_
 
 #include <iostream>
+#include <typeinfo>
 #include "LibraryStorage.h"
 using namespace std;
 
-void testAccessItemByBracket();
-void testAddItemByBracket();
+void testAccessCompartmentByBracket();
 
 void testAddItemMethod();
 void testAddItemToFilledLocation();
