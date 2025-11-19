@@ -28,7 +28,7 @@ void LibraryStorage::printCheckedOut() {
 
 void LibraryStorage::swapItems(int item1Shelf, int item1Compartment, int item2Shelf, int item2Compartment) {
     // Skip swap if either compartment is empty
-    if ((*this)[item1Shelf][item1Compartment]->empty() || (*this)[item2Shelf][item2Compartment]->empty())
+    if ((*this)[item1Shelf][item1Compartment]->isEmpty() || (*this)[item2Shelf][item2Compartment]->isEmpty())
         return;
 
     // Skip swap if either compartment is checked out

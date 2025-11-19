@@ -35,7 +35,7 @@ string Compartment::getDueDate() const {
     return dueDate;
 }
 
-bool Compartment::empty() const {
+bool Compartment::isEmpty() const {
     return item == nullptr;
 }
 

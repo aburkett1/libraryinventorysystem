@@ -16,7 +16,7 @@ public:
     Item* getItem() const;
     string getPerson() const;
     string getDueDate() const;
-    bool empty() const;
+    bool isEmpty() const;
 
     void setItem(Item*& item);
     void setPerson(const string& person);
