@@ -17,6 +17,7 @@ public:
     string getPerson() const;
     string getDueDate() const;
     bool isEmpty() const;
+    bool isCheckedIn() const;
 
     void setItem(Item*& item);
     void setPerson(const string& person);
