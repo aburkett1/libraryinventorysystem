@@ -39,6 +39,10 @@ bool Compartment::isEmpty() const {
     return item == nullptr;
 }
 
+bool Compartment::isCheckedIn() const {
+    return person.empty() && dueDate.empty();
+}
+
 /********************************************************
     MARK: SETTERS
 ********************************************************/
