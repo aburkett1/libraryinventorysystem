@@ -27,14 +27,12 @@ void LibraryStorage::printCheckedOut() {
 }
 
 void LibraryStorage::swapItems(int item1Shelf, int item1Compartment, int item2Shelf, int item2Compartment) {
-    // Skip swap if either compartment is empty
     if ((*this)[item1Shelf][item1Compartment]->isEmpty() || (*this)[item2Shelf][item2Compartment]->isEmpty()) {
-        // Throw Exception
+        throw std::logic_error("\n[Error]: Swap Failed. One or more compartments are empty.\n");
     }
 
-    // Skip swap if either compartment is checked out
     if (!(*this)[item1Shelf][item1Compartment]->isCheckedIn() || !(*this)[item2Shelf][item2Compartment]->isCheckedIn()) {
-        // Throw Exception
+        throw std::logic_error("\n[Error]: Swap Failed. One or more compartments are checked out.\n");
     }
 
     // Swap compartment pointers
