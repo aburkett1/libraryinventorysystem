@@ -7,7 +7,14 @@ LibraryStorage::~LibraryStorage() {
 }
 
 void LibraryStorage::addItem(Item* newItem, int shelfLocation, int compartmentLocation) {
-    (*this)[shelfLocation][compartmentLocation]->setItem(newItem);
+    try
+    {
+        (*this)[shelfLocation][compartmentLocation]->setItem(newItem);
+    }
+    catch (out_of_range& e)
+    {        
+        throw;
+    }
 }
 
 void LibraryStorage::checkOut(int shelfIndex, int compartmentIndex, string name, string dueDate) {
@@ -100,9 +107,17 @@ void LibraryStorage::addShelves(int amount) {
 }
 
 Shelf& LibraryStorage::operator[](int index) {
+    if (index < 0 || index >= storage.size())
+    {
+        throw out_of_range("Invalid Index: " + to_string(index) + " is not 0 <= index < " + to_string(storage.size()));
+    }
     return *storage[index];
 }
 
 Shelf& LibraryStorage::operator[](int index) const {
+    if (index < 0 || index >= storage.size())
+    {
+        throw out_of_range("Invalid Index: " + to_string(index) + " is not 0 <= index < " + to_string(storage.size()));
+    }
     return *storage[index];
 }
