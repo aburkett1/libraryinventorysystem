@@ -245,11 +245,20 @@ void testSwapItemAndNothing() {
         // Attempt Swap - Should throw std::logic_error
         library.swapItems(0, 0, 1, 1);
 
-        // Test fails if swap goes through
-        cout << "testSwapItemAndNothing: FAIL" << endl;
+        // If we get here, no exception was thrown -> FAIL
+        cout << "testSwapItemAndNothing: FAIL (no exception thrown)" << endl;
     }
-    catch (const logic_error&) {
-        cout << "testSwapItemAndNothing: PASS" << endl;
+    catch (const logic_error& ex1) {
+        if (string(ex1.what()) == "\n[Error]: Swap Failed. One or more compartments are empty.\n") {
+            cout << "testSwapItemAndNothing: PASS" << endl;
+        } else {
+            cout << "testSwapItemAndNothing: FAIL (wrong exception: \""
+                 << ex1.what() << "\" is not \"[Error]: Swap Failed. One or more compartments are empty.\"" << ")" << endl;
+        }
+    }
+    catch (const exception& ex2) {
+        cout << "testSwapItemAndNothing: FAIL (wrong exception: \""
+             << ex2.what() << "\" is not \"[Error]: Swap Failed. One or more compartments are empty.\"" << ")" << endl;
     }
 }
 
@@ -262,11 +271,20 @@ void testSwapNothingAndNothing() {
         // Attempt Swap - Should throw std::logic_error
         library.swapItems(0, 0, 1, 1);
 
-        // Test fails if swap goes through
-        cout << "testSwapNothingAndNothing: FAIL" << endl;
+        // If we get here, no exception was thrown -> FAIL
+        cout << "testSwapNothingAndNothing: FAIL (no exception thrown)" << endl;
     }
-    catch (const logic_error&) {
-        cout << "testSwapNothingAndNothing: PASS" << endl;
+    catch (const logic_error& ex1) {
+        if (string(ex1.what()) == "\n[Error]: Swap Failed. One or more compartments are empty.\n") {
+            cout << "testSwapNothingAndNothing: PASS" << endl;
+        } else {
+            cout << "testSwapNothingAndNothing: FAIL (wrong exception: \""
+                 << ex1.what() << "\" is not \"[Error]: Swap Failed. One or more compartments are empty.\"" << ")" << endl;
+        }
+    }
+    catch (const exception& ex2) {
+        cout << "testSwapNothingAndNothing: FAIL (wrong exception: \""
+             << ex2.what() << "\" is not \"[Error]: Swap Failed. One or more compartments are empty.\"" << ")" << endl;
     }
 }
 
@@ -293,11 +311,20 @@ void testSwapItemAndCheckedOut() {
         // Attempt Swap - Should throw std::logic_error
         library.swapItems(0, 0, 1, 1);
 
-        // Test fails if swap goes through
-        cout << "testSwapItemAndCheckedOut: FAIL" << endl;
+        // If we get here, no exception was thrown -> FAIL
+        cout << "testSwapItemAndCheckedOut: FAIL (no exception thrown)" << endl;
     }
-    catch (const logic_error&) {
-        cout << "testSwapItemAndCheckedOut: PASS" << endl;
+    catch (const logic_error& ex1) {
+        if (string(ex1.what()) == "\n[Error]: Swap Failed. One or more compartments are checked out.\n") {
+            cout << "testSwapItemAndCheckedOut: PASS" << endl;
+        } else {
+            cout << "testSwapItemAndCheckedOut: FAIL (wrong exception: \""
+                 << ex1.what() << "\" is not \"[Error]: Swap Failed. One or more compartments are checked out.\"" << ")" << endl;
+        }
+    }
+    catch (const exception& ex2) {
+        cout << "testSwapItemAndCheckedOut: FAIL (wrong exception: \""
+             << ex2.what() << "\" is not \"[Error]: Swap Failed. One or more compartments are checked out.\"" << ")" << endl;
     }
 }
 
@@ -325,10 +352,19 @@ void testSwapCheckedOutAndCheckedOut() {
         // Attempt Swap - Should throw std::logic_error
         library.swapItems(0, 0, 1, 1);
 
-        // Test fails if swap goes through
-        cout << "testSwapCheckedOutAndCheckedOut: FAIL" << endl;
+        // If we get here, no exception was thrown -> FAIL
+        cout << "testSwapCheckedOutAndCheckedOut: FAIL (no exception thrown)" << endl;
     }
-    catch (const logic_error&) {
-        cout << "testSwapCheckedOutAndCheckedOut: PASS" << endl;
+    catch (const logic_error& ex1) {
+        if (string(ex1.what()) == "\n[Error]: Swap Failed. One or more compartments are checked out.\n") {
+            cout << "testSwapCheckedOutAndCheckedOut: PASS" << endl;
+        } else {
+            cout << "testSwapCheckedOutAndCheckedOut: FAIL (wrong exception: \""
+                 << ex1.what() << "\" is not \"[Error]: Swap Failed. One or more compartments are checked out.\"" << ")" << endl;
+        }
+    }
+    catch (const exception& ex2) {
+        cout << "testSwapCheckedOutAndCheckedOut: FAIL (wrong exception: \""
+             << ex2.what() << "\" is not \"[Error]: Swap Failed. One or more compartments are checked out.\"" << ")" << endl;
     }
 }
