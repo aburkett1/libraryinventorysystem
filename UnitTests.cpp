@@ -42,12 +42,52 @@ void testAddItemMethod() {
     }
 }
 
-void testAddItemToFilledLocation() {
 
+void testAddItemToFilledLocation() {
+  cout <<"Trying to add something out of bounds" << endl;
+
+  try{
+
+    LibraryStorage lib;
+
+    int occShelf = 0;
+    int occComp = 0;
+
+    Item* first =new Book("fake title","fake Desc","fake auth","fake date");
+    lib.addItem(first, occShelf, occComp);
+
+    Item* second = new Book("fake title2","fake Desc2","fake auth2", "fake date2");
+    lib.addItem(second, occShelf, occComp);
+
+
+    cout << "error handling failed for testAddItemToFilledLocation()";
+  }
+  catch (const exception& e) {
+    cout <<"test threw error for testAddItemFilledLocation(): " << e.what() << endl;
+  }
 }
 
-void testAddItemToOutOfBounds() {
 
+void testAddItemToOutOfBounds() {
+  cout << "testing out of bounds" << endl;
+
+  try {
+    LibraryStorage lib;
+
+    Item* newItem = new Book("oob book", "oob desc", "oob auth","oob date");
+    
+    int oobShelf = 1000;
+    int oobComp = 1000;
+
+    lib.addItem(newItem, oobShelf, oobComp);
+
+
+    cout <<"error handling failed did not throw oob error\n";
+
+  }
+  catch (const exception& e){
+    cout << "error handling worked for out of bounds: " << e.what() << endl;
+  }
 }
 
 
