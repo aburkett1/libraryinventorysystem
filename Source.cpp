@@ -28,6 +28,8 @@ int main()
     testSwapItemAndItem();
     testSwapItemAndNothing();
     testSwapNothingAndNothing();
+    testSwapItemAndCheckedOut();
+    testSwapCheckedOutAndCheckedOut();
 
     return 0;
 } // end of main()

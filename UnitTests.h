@@ -24,5 +24,7 @@ void testPrintCheckedOutMethod();
 void testSwapItemAndItem();
 void testSwapItemAndNothing();
 void testSwapNothingAndNothing();
+void testSwapItemAndCheckedOut();
+void testSwapCheckedOutAndCheckedOut();
 
 #endif

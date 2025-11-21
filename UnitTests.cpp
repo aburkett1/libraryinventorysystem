@@ -204,15 +204,167 @@ void testPrintCheckedOutMethod() {
 
 }
 
-
 void testSwapItemAndItem() {
+    // Create Library
+    LibraryStorage library;
+    library.addShelves(2);
 
+    // Create Items
+    Book* testBook = new Book("Book Title", "Book Description ", "Book Author ", "01/01/2001");
+    Magazine* testMag = new Magazine("Mag Title", "Mag Description", "Mag Edition");
+
+    // Add Items
+    library.addItem(testBook, 0, 0);
+    library.addItem(testMag, 1, 1);
+
+    // Swap Items
+    library.swapItems(0, 0, 1, 1);
+
+    // Access items at locations
+    Item* itemAtLocation00 = library[0][0]->getItem();
+    Item* itemAtLocation11 = library[1][1]->getItem();
+
+    // Test if swap was successful
+    cout << "testSwapItemAndItem: ";
+    cout << (*testBook == *itemAtLocation11 && *testMag == *itemAtLocation00 ? "PASS" : "FAIL");
+    cout << endl;
 }
 
 void testSwapItemAndNothing() {
+    try {
+        // Create Library
+        LibraryStorage library;
+        library.addShelves(2);
 
+        // Create Items
+        Book* testBook = new Book("Test Title", "Test Description", "Test Author", "01/01/2025");
+
+        // Add Item
+        library.addItem(testBook, 0, 0);
+
+        // Attempt Swap - Should throw std::logic_error
+        library.swapItems(0, 0, 1, 1);
+
+        // If we get here, no exception was thrown -> FAIL
+        cout << "testSwapItemAndNothing: FAIL (no exception thrown)" << endl;
+    }
+    catch (const logic_error& ex1) {
+        if (string(ex1.what()) == "\n[Error]: Swap Failed. One or more compartments are empty.\n") {
+            cout << "testSwapItemAndNothing: PASS" << endl;
+        } else {
+            cout << "testSwapItemAndNothing: FAIL (wrong exception: \""
+                 << ex1.what() << "\" is not \"[Error]: Swap Failed. One or more compartments are empty.\"" << ")" << endl;
+        }
+    }
+    catch (const exception& ex2) {
+        cout << "testSwapItemAndNothing: FAIL (wrong exception: \""
+             << ex2.what() << "\" is not \"[Error]: Swap Failed. One or more compartments are empty.\"" << ")" << endl;
+    }
 }
 
 void testSwapNothingAndNothing() {
+    try {
+        // Create Library
+        LibraryStorage library;
+        library.addShelves(2);
 
+        // Attempt Swap - Should throw std::logic_error
+        library.swapItems(0, 0, 1, 1);
+
+        // If we get here, no exception was thrown -> FAIL
+        cout << "testSwapNothingAndNothing: FAIL (no exception thrown)" << endl;
+    }
+    catch (const logic_error& ex1) {
+        if (string(ex1.what()) == "\n[Error]: Swap Failed. One or more compartments are empty.\n") {
+            cout << "testSwapNothingAndNothing: PASS" << endl;
+        } else {
+            cout << "testSwapNothingAndNothing: FAIL (wrong exception: \""
+                 << ex1.what() << "\" is not \"[Error]: Swap Failed. One or more compartments are empty.\"" << ")" << endl;
+        }
+    }
+    catch (const exception& ex2) {
+        cout << "testSwapNothingAndNothing: FAIL (wrong exception: \""
+             << ex2.what() << "\" is not \"[Error]: Swap Failed. One or more compartments are empty.\"" << ")" << endl;
+    }
+}
+
+void testSwapItemAndCheckedOut() {
+    try {
+        // Create Library
+        LibraryStorage library;
+        library.addShelves(2);
+
+        // Create Items
+        Book* testBook = new Book("Book Title", "Book Description ", "Book Author ", "01/01/2001");
+        Magazine* testMag = new Magazine("Mag Title", "Mag Description", "Mag Edition");
+
+        // Add Items
+        library.addItem(testBook, 0, 0);
+        library.addItem(testMag, 1, 1);
+
+        // Checkout item
+        library.checkOut(1, 1, "Test Person", "Test Date");
+
+        // Swap Items
+        library.swapItems(0, 0, 1, 1);
+
+        // Attempt Swap - Should throw std::logic_error
+        library.swapItems(0, 0, 1, 1);
+
+        // If we get here, no exception was thrown -> FAIL
+        cout << "testSwapItemAndCheckedOut: FAIL (no exception thrown)" << endl;
+    }
+    catch (const logic_error& ex1) {
+        if (string(ex1.what()) == "\n[Error]: Swap Failed. One or more compartments are checked out.\n") {
+            cout << "testSwapItemAndCheckedOut: PASS" << endl;
+        } else {
+            cout << "testSwapItemAndCheckedOut: FAIL (wrong exception: \""
+                 << ex1.what() << "\" is not \"[Error]: Swap Failed. One or more compartments are checked out.\"" << ")" << endl;
+        }
+    }
+    catch (const exception& ex2) {
+        cout << "testSwapItemAndCheckedOut: FAIL (wrong exception: \""
+             << ex2.what() << "\" is not \"[Error]: Swap Failed. One or more compartments are checked out.\"" << ")" << endl;
+    }
+}
+
+void testSwapCheckedOutAndCheckedOut() {
+    try {
+        // Create Library
+        LibraryStorage library;
+        library.addShelves(2);
+
+        // Create Items
+        Book* testBook = new Book("Book Title", "Book Description ", "Book Author ", "01/01/2001");
+        Magazine* testMag = new Magazine("Mag Title", "Mag Description", "Mag Edition");
+
+        // Add Items
+        library.addItem(testBook, 0, 0);
+        library.addItem(testMag, 1, 1);
+
+        // Checkout items
+        library.checkOut(0, 0, "Test Person 0", "Test Date 0");
+        library.checkOut(1, 1, "Test Person 1", "Test Date 1");
+
+        // Swap Items
+        library.swapItems(0, 0, 1, 1);
+
+        // Attempt Swap - Should throw std::logic_error
+        library.swapItems(0, 0, 1, 1);
+
+        // If we get here, no exception was thrown -> FAIL
+        cout << "testSwapCheckedOutAndCheckedOut: FAIL (no exception thrown)" << endl;
+    }
+    catch (const logic_error& ex1) {
+        if (string(ex1.what()) == "\n[Error]: Swap Failed. One or more compartments are checked out.\n") {
+            cout << "testSwapCheckedOutAndCheckedOut: PASS" << endl;
+        } else {
+            cout << "testSwapCheckedOutAndCheckedOut: FAIL (wrong exception: \""
+                 << ex1.what() << "\" is not \"[Error]: Swap Failed. One or more compartments are checked out.\"" << ")" << endl;
+        }
+    }
+    catch (const exception& ex2) {
+        cout << "testSwapCheckedOutAndCheckedOut: FAIL (wrong exception: \""
+             << ex2.what() << "\" is not \"[Error]: Swap Failed. One or more compartments are checked out.\"" << ")" << endl;
+    }
 }
