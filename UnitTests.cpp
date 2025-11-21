@@ -284,10 +284,8 @@ void testSwapItemAndCheckedOut() {
         library.addItem(testBook, 0, 0);
         library.addItem(testMag, 1, 1);
 
-        // MARK: PLACEHOLDER
-        //       FOR CHECKOUT LOGIC
-        library[1][1]->setPerson("Test Person 1");
-        library[1][1]->setDueDate("Test Date 1");
+        // Checkout item
+        library.checkOut(1, 1, "Test Person", "Test Date");
 
         // Swap Items
         library.swapItems(0, 0, 1, 1);
@@ -317,12 +315,9 @@ void testSwapCheckedOutAndCheckedOut() {
         library.addItem(testBook, 0, 0);
         library.addItem(testMag, 1, 1);
 
-        // MARK: PLACEHOLDER
-        //       FOR CHECKOUT LOGIC
-        library[0][0]->setPerson("Test Person 0");
-        library[0][0]->setDueDate("Test Date 0");
-        library[1][1]->setPerson("Test Person 1");
-        library[1][1]->setDueDate("Test Date 1");
+        // Checkout items
+        library.checkOut(0, 0, "Test Person 0", "Test Date 0");
+        library.checkOut(1, 1, "Test Person 1", "Test Date 1");
 
         // Swap Items
         library.swapItems(0, 0, 1, 1);
