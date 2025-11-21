@@ -52,31 +52,26 @@ void testAddItemToOutOfBounds() {
 
 
 void testCheckInMethod() {
-    // Test Phrase
-    string testPhrase = "Book for testing testAddItemMethod";
+    // Create Library
+    LibraryStorage library = LibraryStorage();
+    library.addShelves(1);
 
-    try{
-        //Create Library
-        LibraryStorage library = LibraryStorage();
-        library.addShelves(1);
+    // Create Item
+    Book* testBook = new Book("Test Title", "Test Description", "Test Author", "01/01/2025");
 
-        // Creating Item
-        Book* testBook = new Book("Test Name", testPhrase, "Test Title", "Test Author", "01/01/2025");
+    // Add Item
+    library.addItem(testBook, 0, 0);
 
-        // Add Item
-        library.addItem(testBook, 0,0);
-
+    try
+    {
         // Check Out an Item
         library.checkOut(0, 0, "John", "11/11/2025");
 
-        //Check Item In
-        library.checkIn(testBook);
+        // Check Item In
+        library.checkIn(0, 0);
 
         // Validate person and due date
-        string person = library[0][0].getPerson();
-        string due = library[0][0].getDueDate();
-
-        if (person == "" && due == "")
+        if (library[0][0]->isCheckedIn())
         {
             cout << "testCheckInMethod: PASS" << endl;
         }
@@ -85,43 +80,44 @@ void testCheckInMethod() {
             cout << "testCheckInMethod: FAIL" << endl;
         }
     }
-    catch(const exception& e){
+    catch(const exception& e)
+    {
         cout << "testCheckInMethod: FAIL (expecetion: " << e.what() << ")" << endl;
     }
 }
 
 void testCheckInItemThatsNotCheckedOut() {
-    // Test Phrase
-    string testPhrase = "Book for testing testAddItemMethod";
+    // Create Library
+    LibraryStorage library = LibraryStorage();
+    library.addShelves(1);
 
-    try{
-        //Create Library
-        LibraryStorage library = LibraryStorage();
-        library.addShelves(1);
+    // Create Item
+    Book* testBook = new Book("Test Title", "Test Description", "Test Author", "01/01/2025");
 
-        // Creating Item
-        Book* testBook = new Book("Test Name", testPhrase, "Test Title", "Test Author", "01/01/2025");
-        library.addItem(testBook, 0, 0);
+    // Add Item
+    library.addItem(testBook, 0, 0);
 
-        // Call checkIn
-        library.checkIn(testBook);
-
-        // Get Compartment Info
-        string person = library[0][0].getPerson();
-        string due = library[0][0].getDueDate();
-
-
-        if (person == "" && due == "")
+    try
+    {
+        // Check Item In
+        library.checkIn(0, 0);
+    }
+    catch(const runtime_error& e)
+    {
+        if (string(e.what()) == "Item is not currently checked out.")
         {
             cout << "testCheckInItemThatsNotCheckedOut: PASS" << endl;
         }
         else
         {
-            cout << "testCheckInItemThatsNotCheckedOut: FAIL" << endl;
+            cout << "testCheckInItemThatsNotCheckedOut: FAIL (wrong exception: \""
+             << e.what() << "\" is not \"Item is not currently checked out.\"" << ")" << endl;
         }
     }
-    catch(const exception& e){
-        cout << "testCheckInItemThatsNotCheckedOut: FAIL (exception: " << e.what() << ")" << endl;
+    catch(const exception& e)
+    {
+        cout << "testCheckInItemThatsNotCheckedOut: FAIL (wrong exception: \""
+             << e.what() << "\" is not \"Item is not currently checked out.\"" << ")" << endl;
     }
 }
 
@@ -184,11 +180,19 @@ void testCheckOutItemThatsNotCheckedIn() {
     }
     catch (const runtime_error& e) {
         // We expect "Item already checked out."
-        cout << "testCheckOutItemThatsNotCheckedIn: PASS" << endl;
+        if (string(e.what()) == "Item already checked out.")
+        {
+            cout << "testCheckOutItemThatsNotCheckedIn: PASS" << endl;
+        }
+        else
+        {
+            cout << "testCheckOutItemThatsNotCheckedIn: FAIL (wrong exception: \""
+             << e.what() << "\" is not \"Item already checked out.\"" << ")" << endl;
+        }
     }
     catch (const exception& e) {
-        cout << "testCheckOutItemThatsNotCheckedIn: FAIL (wrong exception: "
-             << e.what() << ")" << endl;
+        cout << "testCheckOutItemThatsNotCheckedIn: FAIL (wrong exception: \""
+             << e.what() << "\" is not \"Item already checked out.\"" << ")" << endl;
     }
 }
 

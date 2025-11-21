@@ -11,47 +11,59 @@ void LibraryStorage::addItem(Item* newItem, int shelfLocation, int compartmentLo
 }
 
 void LibraryStorage::checkOut(int shelfIndex, int compartmentIndex, string name, string dueDate) {
-
-    //Check range of the compartments and shelves
-    Compartment* compartment = shelves.at(shelfIndex)->compartments.at(compartmentIndex);
-
-    //Check if compartment has item
-    if (compartment->getItem == nullptr)
+    try
     {
-        throw runtime_error("No item in compartment exist.");
-    }
+        //Check range of the compartments and shelves
+        Compartment* compartment = (*this)[shelfIndex][compartmentIndex];
 
-    //Check if item is already checked out
-    if (!compartment->getPerson().empty())
+        //Check if compartment has item
+        if (compartment->getItem() == nullptr)
+        {
+            throw runtime_error("No item in compartment exist.");
+        }
+
+        //Check if item is already checked out
+        if (!compartment->isCheckedIn())
+        {
+            throw runtime_error("Item already checked out.");
+        }
+
+        // Check out item
+        compartment->setPerson(name);
+        compartment->setDueDate(dueDate);
+    }
+    catch(const exception& e)
     {
-        throw runtime_error("Item already checked out.");
+        throw;
     }
-
-    // Check out item
-    compartment->setPerson(name);
-    compartment->setDueDate(dueDate);
 }
 
 void LibraryStorage::checkIn(int shelfIndex, int compartmentIndex) {
-
-    // Get the compartment at the given location
-    Compartment* compartment = shelves.at(shelfIndex)->compartments.at(compartmentIndex);
-
-    // Make sure there is actually an item in this compartment
-    if (compartment->getItem() == nullptr)
+    try
     {
-        throw std::runtime_error("No item in compartment exists.");
-    }
+        // Get the compartment at the given location
+        Compartment* compartment = (*this)[shelfIndex][compartmentIndex];
 
-    // Make sure this item is currently checked out
-    if (compartment->getPerson().empty())
+        // Make sure there is actually an item in this compartment
+        if (compartment->getItem() == nullptr)
+        {
+            throw runtime_error("No item in compartment exists.");
+        }
+
+        // Make sure this item is currently checked out
+        if (compartment->isCheckedIn())
+        {
+            throw runtime_error("Item is not currently checked out.");
+        }
+
+        // "Check in" the item: clear borrower name and due date
+        compartment->setPerson("");
+        compartment->setDueDate("");
+    }
+    catch(const exception& e)
     {
-        throw std::runtime_error("Item is not currently checked out.");
+        throw;
     }
-
-    // "Check in" the item: clear borrower name and due date
-    compartment->setPerson("");
-    compartment->setDueDate("");
 }
 
 void LibraryStorage::printCheckedIn() {
