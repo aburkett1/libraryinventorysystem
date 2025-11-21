@@ -13,7 +13,7 @@ public:
 
     void addItem(Item* newItem, int shelfLocation, int compartmentLocation);
     void addShelves(int amount);
-    void checkOut(string name, string dueDate);
+    void checkOut(int shelf, int compartment, string name, string dueDate);
     void checkIn(Item* returnItem);
     void printCheckedIn();
     void printCheckedOut();
