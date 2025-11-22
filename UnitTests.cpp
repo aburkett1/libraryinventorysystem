@@ -44,47 +44,61 @@ void testAddItemMethod() {
 
 
 void testAddItemToFilledLocation() {
+    try {
+        LibraryStorage lib;
+        lib.addShelves(2);
 
-  try{
+        int occupiedShelf = 0;
+        int occupiedComp = 0;
 
-    LibraryStorage lib;
+        Item* first = new Book("fake title","fake Desc","fake auth","fake date");
+        lib.addItem(first, occupiedShelf, occupiedComp);
 
-    int occShelf = 0;
-    int occComp = 0;
+        Item* second = new Book("fake title2","fake Desc2","fake auth2", "fake date2");
+        lib.addItem(second, occupiedShelf, occupiedComp);
 
-    Item* first =new Book("fake title","fake Desc","fake auth","fake date");
-    lib.addItem(first, occShelf, occComp);
-
-    Item* second = new Book("fake title2","fake Desc2","fake auth2", "fake date2");
-    lib.addItem(second, occShelf, occComp);
-
-
-    cout << "testAddItemToFilledLocation: FAIL (second add did not throw error)\n";
-  }
-  catch (const exception& e) {
-    cout <<"testAddItemToFilledLocation: PASS (" << e.what() << ")\n";
-  }
+        cout << "testAddItemToFilledLocation: FAIL (second add did not throw error)\n";
+    }
+    catch (const logic_error& e) {
+        if (string(e.what()) == "This compartment already has an item")
+        {
+            cout << "testAddItemToFilledLocation: PASS" << endl;
+        }
+        else
+        {
+            cout << "testAddItemToFilledLocation: FAIL (wrong exception: \""
+             << e.what() << "\" is not \"This compartment already has an item\"" << ")" << endl;
+        }
+    }
 }
 
 void testAddItemToOutOfBounds() {
+    try {
+        LibraryStorage lib;
+        lib.addShelves(2);
 
-  try {
-    LibraryStorage lib;
+        Item* newItem = new Book("oob book", "oob desc", "oob auth","oob date");
+        
+        int oobShelf = 1000;
+        int oobComp = 1000;
 
-    Item* newItem = new Book("oob book", "oob desc", "oob auth","oob date");
-    
-    int oobShelf = 1000;
-    int oobComp = 1000;
-
-    lib.addItem(newItem, oobShelf, oobComp);
+        lib.addItem(newItem, oobShelf, oobComp);
 
 
-    cout <<"testAddItemToOutOfBounds: FAIL (no exception thrown)\n";
+        cout <<"testAddItemToOutOfBounds: FAIL (no exception thrown)\n";
 
-  }
-  catch (const exception& e){
-    cout << "testAddItemToOutOfBounds: PASS (" << e.what() << ")\n";
-  }
+    }
+    catch (const out_of_range& e){
+        if (string(e.what()).substr(0, 14) == "Invalid Index:")
+        {
+            cout << "testAddItemToOutOfBounds: PASS" << endl;
+        }
+        else
+        {
+            cout << "testAddItemToOutOfBounds: FAIL (wrong exception: \""
+             << e.what() << "\" is not \"Invalid Index:\"" << ")" << endl;
+        }
+    }
 }
 
 void testCheckInMethod() {
