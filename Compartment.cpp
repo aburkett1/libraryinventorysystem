@@ -76,15 +76,15 @@ ostream& operator<<(ostream& out, const Compartment& compartment) {
 
     if (book)
     {
-        out << book;
+        out << *book;
     }
     else if (magazine)
     {
-        out << magazine;
+        out << *magazine;
     }
     else if (movie)
     {
-        out << movie;
+        out << *movie;
     }
 
     out << endl;
