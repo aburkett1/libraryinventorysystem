@@ -76,30 +76,23 @@ ostream& operator<<(ostream& out, const Compartment& compartment) {
 
     if (book)
     {
-        out << setw(colWidth) << "ID: " << book->getId() << endl;
-        out << setw(colWidth) << "Title: " << book->getTitle() << endl;
+        out << book;
     }
     else if (magazine)
     {
-        out << setw(colWidth) << "ID: " << magazine->getId() << endl;
-        out << setw(colWidth) << "Title: " << magazine->getTitle() << endl;
+        out << magazine;
     }
     else if (movie)
     {
-        out << setw(colWidth) << "ID: " << movie->getId() << endl;
-        out << setw(colWidth) << "Title: " << movie->getTitle() << endl;
+        out << movie;
     }
 
     out << endl;
 
-    if (compartment.getPerson() != "")
+    if (!compartment.isCheckedIn())
     {
         out << "Item checked out by " << compartment.getPerson() << ".\n";
         out << "Due Date: " << compartment.getDueDate() << ".\n";
-    }
-    else
-    {
-        out << "Item checked in.\n";
     }
 
     out << right;
