@@ -75,8 +75,8 @@ void LibraryStorage::checkIn(int shelfIndex, int compartmentIndex) {
 
 void LibraryStorage::printCheckedIn() {
   //loop through storage
-  cout << "The following are checked in";
-for (int s = 0; s < storage.size(); s++){
+  cout << "========Checked in Items========\n";
+  for (int s = 0; s < storage.size(); s++){
     auto shelf = storage[s];
 
     for (int c = 0; c < 15; c++){
@@ -84,9 +84,9 @@ for (int s = 0; s < storage.size(); s++){
       auto compartment = (*shelf)[c];
           //if checkedin = compartment has an item and is checked in then print
       if (compartment && compartment->getItem() && compartment->isCheckedIn()){
-          cout << "Shelf " << s << " , Compartment " << c << ":\n";
-          cout << *compartment << "\n";
-          cout << "----------------------------" << "\n";
+          cout << "Shelf " << setw(2) << s << "  |  Compartment "<< setw(2) << c << ":\n";
+          cout << *compartment;
+          cout << "--------------------" << "\n";
         }
       }
   }
@@ -94,16 +94,16 @@ for (int s = 0; s < storage.size(); s++){
 
 void LibraryStorage::printCheckedOut() {
   //loop through storage
-  cout << "The following are checked out";
-for (int s = 0; s < storage.size(); s++){
+  cout << "========Checked out Items========\n"; 
+  for (int s = 0; s < storage.size(); s++){
     auto shelf = storage[s];
 
     for (int c = 0; c < 15; c++){
       auto compartment = (*shelf)[c];
           //if compartment has an item and is not checked in print 
       if (compartment && compartment->getItem() && !compartment->isCheckedIn()){
-          cout << "Shelf " << s << " , Compartment " << c << ":\n";
-          cout << *compartment << "\n";
+          cout << "Shelf " << setw(2) << s << "  |  Compartment " << setw(2) << c << ":\n";
+          cout << *compartment;
           cout << "----------------------------" << "\n";
         }
       }

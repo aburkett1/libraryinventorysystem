@@ -44,7 +44,6 @@ void testAddItemMethod() {
 
 
 void testAddItemToFilledLocation() {
-  cout <<"Trying to add something out of bounds" << endl;
 
   try{
 
@@ -60,16 +59,14 @@ void testAddItemToFilledLocation() {
     lib.addItem(second, occShelf, occComp);
 
 
-    cout << "error handling failed for testAddItemToFilledLocation()";
+    cout << "testAddItemToFilledLocation: FAIL (second add did not throw error)\n";
   }
   catch (const exception& e) {
-    cout <<"test threw error for testAddItemFilledLocation(): " << e.what() << endl;
+    cout <<"testAddItemToFilledLocation: PASS (" << e.what() << ")\n";
   }
 }
 
-
 void testAddItemToOutOfBounds() {
-  cout << "testing out of bounds" << endl;
 
   try {
     LibraryStorage lib;
@@ -82,14 +79,13 @@ void testAddItemToOutOfBounds() {
     lib.addItem(newItem, oobShelf, oobComp);
 
 
-    cout <<"error handling failed did not throw oob error\n";
+    cout <<"testAddItemToOutOfBounds: FAIL (no exception thrown)\n";
 
   }
   catch (const exception& e){
-    cout << "error handling worked for out of bounds: " << e.what() << endl;
+    cout << "testAddItemToOutOfBounds: PASS (" << e.what() << ")\n";
   }
 }
-
 
 void testCheckInMethod() {
     // Create Library
