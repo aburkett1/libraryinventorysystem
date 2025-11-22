@@ -9,10 +9,21 @@ LibraryStorage::~LibraryStorage() {
 void LibraryStorage::addItem(Item* newItem, int shelfLocation, int compartmentLocation) {
     try
     {
-        (*this)[shelfLocation][compartmentLocation]->setItem(newItem);
+        //if there is an item already at this location throw an error
+        if((*this)[shelfLocation][compartmentLocation]->isEmpty())
+        {
+            //add the item at the empty compartment
+            (*this)[shelfLocation][compartmentLocation]->setItem(newItem);
+        }
+        else{
+            //throw the error to be caught by the caller and handled
+            throw logic_error("This compartment already has an item");
+        }
     }
+    //catch the out_of_range error thrown to the overloaded [] operator
     catch (out_of_range& e)
     {        
+    	//re-throw so that the caller can catch and handle it
         throw;
     }
 }

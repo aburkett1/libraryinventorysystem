@@ -197,11 +197,54 @@ void testCheckOutItemThatsNotCheckedIn() {
 }
 
 void testPrintCheckedInMethod() {
+    // Create Library
+    LibraryStorage library = LibraryStorage();
+    library.addShelves(2);
 
+    //Create string for a Movie item
+    vector<string>* a = new vector<string>{"Test Actor", "Test Actress"};
+
+    // Create Items
+    Book* testBook = new Book("Test Title", "Test Description", "Test Author", "01/01/2025");
+    Movie* testMovie = new Movie("Test Title", "Test Description", "Test Director", a);
+    Magazine* testMagazine = new Magazine("Test Title", "Test Description", "Test Edition");
+
+    // Add Items
+    library.addItem(testBook, 0, 5);
+    library.addItem(testMovie, 1, 12);
+    library.addItem(testMagazine, 0, 14);
+
+    //Check out Item(s)
+    library.checkOut(1, 12, "John Doe", "02/03/2026");
+
+    //test printCheckedIn
+    library.printCheckedIn();
 }
 
 void testPrintCheckedOutMethod() {
+    // Create Library
+    LibraryStorage library = LibraryStorage();
+    library.addShelves(2);
 
+    //Create string for a Movie item
+    vector<string>* a = new vector<string>{"Test Actor", "Test Actress"};
+
+    // Create Items
+    Book* testBook = new Book("Test Title", "Test Description", "Test Author", "01/01/2025");
+    Movie* testMovie = new Movie("Test Title", "Test Description", "Test Director", a);
+    Magazine* testMagazine = new Magazine("Test Title", "Test Description", "Test Edition");
+
+    // Add Items
+    library.addItem(testBook, 0, 5);
+    library.addItem(testMovie, 1, 12);
+    library.addItem(testMagazine, 0, 14);
+
+    //Check out Item(s)
+    library.checkOut(0, 5, "James Buck", "05/06/2026");
+    library.checkOut(0, 14, "Jane Fawn", "07/02/2026");
+
+    //test printCheckedIn
+    library.printCheckedOut();
 }
 
 void testSwapItemAndItem() {
