@@ -85,11 +85,43 @@ void LibraryStorage::checkIn(int shelfIndex, int compartmentIndex) {
 }
 
 void LibraryStorage::printCheckedIn() {
+  //loop through storage
+  cout << "========Checked in Items========\n";
+  cout << "--------------------------------" << "\n";
+  for (int s = 0; s < storage.size(); s++){
+    auto shelf = storage[s];
 
+    for (int c = 0; c < 15; c++){
+      //loop through each compartment
+      auto compartment = (*shelf)[c];
+          //if checkedin = compartment has an item and is checked in then print
+      if (compartment && compartment->getItem() && compartment->isCheckedIn()){
+          cout << "Shelf: " << setw(2) << s << "  |  Compartment: "<< setw(2) << c << endl;
+          cout << *compartment;
+          cout << "--------------------------------" << "\n\n";
+        }
+      }
+  }
+  cout << "================================\n\n";
 }
 
 void LibraryStorage::printCheckedOut() {
+  //loop through storage
+  cout << "========Checked out Items=======\n"; 
+  cout << "--------------------------------" << "\n";
+  for (int s = 0; s < storage.size(); s++){
+    auto shelf = storage[s];
 
+    for (int c = 0; c < 15; c++){
+      auto compartment = (*shelf)[c];
+          //if compartment has an item and is not checked in print 
+      if (compartment && compartment->getItem() && !compartment->isCheckedIn()){
+          cout << *compartment;
+          cout << "--------------------------------" << "\n";
+        }
+      }
+  }
+  cout << "================================\n\n";
 }
 
 void LibraryStorage::swapItems(int item1Shelf, int item1Compartment, int item2Shelf, int item2Compartment) {
