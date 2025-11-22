@@ -86,6 +86,7 @@ void LibraryStorage::checkIn(int shelfIndex, int compartmentIndex) {
 
 void LibraryStorage::printCheckedIn() {
   //loop through storage
+  cout << "--------------------------------" << "\n";
   cout << "========Checked in Items========\n";
   cout << "--------------------------------" << "\n";
   for (int s = 0; s < storage.size(); s++){
@@ -107,6 +108,7 @@ void LibraryStorage::printCheckedIn() {
 
 void LibraryStorage::printCheckedOut() {
   //loop through storage
+  cout << "--------------------------------" << "\n";
   cout << "========Checked out Items=======\n"; 
   cout << "--------------------------------" << "\n";
   for (int s = 0; s < storage.size(); s++){
