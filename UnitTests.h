@@ -18,9 +18,6 @@ void testCheckInItemThatsNotCheckedOut();
 void testCheckOutMethod();
 void testCheckOutItemThatsNotCheckedIn();
 
-void testPrintCheckedInMethod();
-void testPrintCheckedOutMethod();
-
 void testSwapItemAndItem();
 void testSwapItemAndNothing();
 void testSwapNothingAndNothing();

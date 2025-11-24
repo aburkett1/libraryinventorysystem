@@ -99,7 +99,7 @@ void LibraryStorage::printCheckedIn() {
       if (compartment && compartment->getItem() && compartment->isCheckedIn()){
           cout << "Shelf: " << setw(2) << s << "  |  Compartment: "<< setw(2) << c << endl;
           cout << *compartment;
-          cout << "--------------------------------" << "\n\n";
+          cout << "--------------------------------" << "\n";
         }
       }
   }
