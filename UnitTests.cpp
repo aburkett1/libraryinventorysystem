@@ -67,20 +67,24 @@ void testAddItemToFilledLocation() {
         cout << "testAddItemToFilledLocation: FAIL (second add did not throw error)\n";
     }
     catch (const logic_error& e) {
-        if (string(e.what()) == "This compartment already has an item")
+        if (string(e.what()) == "[Error]: This compartment already has an item")
         {
             cout << "testAddItemToFilledLocation: PASS" << endl;
         }
         else
         {
             cout << "testAddItemToFilledLocation: FAIL (wrong exception: \""
-             << e.what() << "\" is not \"This compartment already has an item\"" << ")" << endl;
+             << e.what() << "\" is not \"[Error]: This compartment already has an item\"" << ")" << endl;
         }
+    }
+    catch (const exception& e) {
+        cout << "testAddItemToFilledLocation: FAIL (wrong exception: A logic_error was not thrown)" << endl;
     }
 }
 
 void testAddItemToOutOfBounds() {
-    try {
+    try
+    {
         LibraryStorage lib;
         lib.addShelves(2);
 
@@ -95,16 +99,21 @@ void testAddItemToOutOfBounds() {
         cout <<"testAddItemToOutOfBounds: FAIL (no exception thrown)\n";
 
     }
-    catch (const out_of_range& e){
-        if (string(e.what()).substr(0, 14) == "Invalid Index:")
+    catch (const out_of_range& e)
+    {
+        if (string(e.what()).substr(0, 16) == "[Invalid Index]:")
         {
             cout << "testAddItemToOutOfBounds: PASS" << endl;
         }
         else
         {
             cout << "testAddItemToOutOfBounds: FAIL (wrong exception: \""
-             << e.what() << "\" is not \"Invalid Index:\"" << ")" << endl;
+             << e.what() << "\" is not \"[Invalid Index]:\"" << ")" << endl;
         }
+    }
+    catch (const exception& e)
+    {
+        cout << "testAddItemToOutOfBounds: FAIL (wrong exception: An out_of_range error was not thrown)" << endl;
     }
 }
 
@@ -165,20 +174,19 @@ void testCheckInItemThatsNotCheckedOut() {
     }
     catch(const runtime_error& e)
     {
-        if (string(e.what()) == "Item is not currently checked out.")
+        if (string(e.what()) == "[Error]: Item is not currently checked out.")
         {
             cout << "testCheckInItemThatsNotCheckedOut: PASS" << endl;
         }
         else
         {
             cout << "testCheckInItemThatsNotCheckedOut: FAIL (wrong exception: \""
-             << e.what() << "\" is not \"Item is not currently checked out.\"" << ")" << endl;
+             << e.what() << "\" is not \"[Error]: Item is not currently checked out.\"" << ")" << endl;
         }
     }
     catch(const exception& e)
     {
-        cout << "testCheckInItemThatsNotCheckedOut: FAIL (wrong exception: \""
-             << e.what() << "\" is not \"Item is not currently checked out.\"" << ")" << endl;
+        cout << "testCheckInItemThatsNotCheckedOut: FAIL (wrong exception: A runtime_error was not thrown)" << endl;
     }
 }
 
@@ -245,19 +253,18 @@ void testCheckOutItemThatsNotCheckedIn() {
     }
     catch (const runtime_error& e) {
         // We expect "Item already checked out."
-        if (string(e.what()) == "Item already checked out.")
+        if (string(e.what()) == "[Error]: Item already checked out.")
         {
             cout << "testCheckOutItemThatsNotCheckedIn: PASS" << endl;
         }
         else
         {
             cout << "testCheckOutItemThatsNotCheckedIn: FAIL (wrong exception: \""
-             << e.what() << "\" is not \"Item already checked out.\"" << ")" << endl;
+             << e.what() << "\" is not \"[Error]: Item already checked out.\"" << ")" << endl;
         }
     }
     catch (const exception& e) {
-        cout << "testCheckOutItemThatsNotCheckedIn: FAIL (wrong exception: \""
-             << e.what() << "\" is not \"Item already checked out.\"" << ")" << endl;
+        cout << "testCheckOutItemThatsNotCheckedIn: FAIL (wrong exception: A runtime_error was not thrown)" << endl;
     }
 }
 
@@ -318,8 +325,7 @@ void testSwapItemAndNothing() {
         }
     }
     catch (const exception& ex2) {
-        cout << "testSwapItemAndNothing: FAIL (wrong exception: \""
-             << ex2.what() << "\" is not \"[Error]: Swap Failed. One or more compartments are empty.\"" << ")" << endl;
+        cout << "testSwapItemAndNothing: FAIL (wrong exception: A logic_error was not thrown)" << endl;
     }
 }
 
@@ -344,8 +350,7 @@ void testSwapNothingAndNothing() {
         }
     }
     catch (const exception& ex2) {
-        cout << "testSwapNothingAndNothing: FAIL (wrong exception: \""
-             << ex2.what() << "\" is not \"[Error]: Swap Failed. One or more compartments are empty.\"" << ")" << endl;
+        cout << "testSwapNothingAndNothing: FAIL (wrong exception: A logic_error was not thrown)" << endl;
     }
 }
 
@@ -384,8 +389,7 @@ void testSwapItemAndCheckedOut() {
         }
     }
     catch (const exception& ex2) {
-        cout << "testSwapItemAndCheckedOut: FAIL (wrong exception: \""
-             << ex2.what() << "\" is not \"[Error]: Swap Failed. One or more compartments are checked out.\"" << ")" << endl;
+        cout << "testSwapItemAndCheckedOut: FAIL (wrong exception: A logic_error was not thrown)" << endl;
     }
 }
 
@@ -425,7 +429,6 @@ void testSwapCheckedOutAndCheckedOut() {
         }
     }
     catch (const exception& ex2) {
-        cout << "testSwapCheckedOutAndCheckedOut: FAIL (wrong exception: \""
-             << ex2.what() << "\" is not \"[Error]: Swap Failed. One or more compartments are checked out.\"" << ")" << endl;
+        cout << "testSwapCheckedOutAndCheckedOut: FAIL (wrong exception: A logic_error was not thrown)" << endl;
     }
 }

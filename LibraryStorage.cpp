@@ -25,7 +25,7 @@ void LibraryStorage::addItem(Item* newItem, int shelfLocation, int compartmentLo
         }
         else{
             //throw the error to be caught by the caller and handled
-            throw logic_error("This compartment already has an item");
+            throw logic_error("[Error]: This compartment already has an item");
         }
     }
     //catch the out_of_range error thrown to the overloaded [] operator
@@ -53,13 +53,13 @@ void LibraryStorage::checkOut(int shelfIndex, int compartmentIndex, string name,
         //Check if compartment has item
         if (compartment->getItem() == nullptr)
         {
-            throw runtime_error("No item in compartment exist.");
+            throw runtime_error("[Error]: No item in compartment exist.");
         }
 
         //Check if item is already checked out
         if (!compartment->isCheckedIn())
         {
-            throw runtime_error("Item already checked out.");
+            throw runtime_error("[Error]: Item already checked out.");
         }
 
         // Check out item
@@ -81,13 +81,13 @@ void LibraryStorage::checkIn(int shelfIndex, int compartmentIndex) {
         // Make sure there is actually an item in this compartment
         if (compartment->getItem() == nullptr)
         {
-            throw runtime_error("No item in compartment exists.");
+            throw runtime_error("[Error]: No item in compartment exists.");
         }
 
         // Make sure this item is currently checked out
         if (compartment->isCheckedIn())
         {
-            throw runtime_error("Item is not currently checked out.");
+            throw runtime_error("[Error]: Item is not currently checked out.");
         }
 
         // "Check in" the item: clear borrower name and due date
@@ -168,7 +168,7 @@ void LibraryStorage::printCheckedOut() {
 Shelf& LibraryStorage::operator[](int index) {
     if (index < 0 || index >= storage.size())
     {
-        throw out_of_range("Invalid Index: " + to_string(index) + " is not 0 <= index < " + to_string(storage.size()));
+        throw out_of_range("[Invalid Index]: " + to_string(index) + " is not 0 <= index < " + to_string(storage.size()));
     }
     return *storage[index];
 }
@@ -176,7 +176,7 @@ Shelf& LibraryStorage::operator[](int index) {
 Shelf& LibraryStorage::operator[](int index) const {
     if (index < 0 || index >= storage.size())
     {
-        throw out_of_range("Invalid Index: " + to_string(index) + " is not 0 <= index < " + to_string(storage.size()));
+        throw out_of_range("[Invalid Index]: " + to_string(index) + " is not 0 <= index < " + to_string(storage.size()));
     }
     return *storage[index];
 }
