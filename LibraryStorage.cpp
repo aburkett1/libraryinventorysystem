@@ -102,11 +102,11 @@ void LibraryStorage::checkIn(int shelfIndex, int compartmentIndex) {
 
 void LibraryStorage::swapItems(int item1Shelf, int item1Compartment, int item2Shelf, int item2Compartment) {
     if ((*this)[item1Shelf][item1Compartment]->isEmpty() || (*this)[item2Shelf][item2Compartment]->isEmpty()) {
-        throw std::logic_error("\n[Error]: Swap Failed. One or more compartments are empty.\n");
+        throw std::logic_error("[Error]: Swap Failed. One or more compartments are empty.\n");
     }
 
     if (!(*this)[item1Shelf][item1Compartment]->isCheckedIn() || !(*this)[item2Shelf][item2Compartment]->isCheckedIn()) {
-        throw std::logic_error("\n[Error]: Swap Failed. One or more compartments are checked out.\n");
+        throw std::logic_error("[Error]: Swap Failed. One or more compartments are checked out.\n");
     }
 
     // Swap compartment pointers

@@ -41,7 +41,7 @@ void testAddItemMethod() {
     // Test to see if item is there.
     if (*testBook == *bookAtLocation)
     {
-        cout << "testAddItemMethod: PASS" << endl;
+        cout << "testAddItemMethod: PASS" << endl << endl;
     }
     else
     {
@@ -70,6 +70,7 @@ void testAddItemToFilledLocation() {
         if (string(e.what()) == "[Error]: This compartment already has an item")
         {
             cout << "testAddItemToFilledLocation: PASS" << endl;
+            cout << "Exception Received: " << e.what() << endl << endl;
         }
         else
         {
@@ -104,6 +105,7 @@ void testAddItemToOutOfBounds() {
         if (string(e.what()).substr(0, 16) == "[Invalid Index]:")
         {
             cout << "testAddItemToOutOfBounds: PASS" << endl;
+            cout << "Exception Received: " << e.what() << endl << endl;
         }
         else
         {
@@ -143,7 +145,7 @@ void testCheckInMethod() {
         // Validate person and due date
         if (library[0][0]->isCheckedIn())
         {
-            cout << "testCheckInMethod: PASS" << endl;
+            cout << "testCheckInMethod: PASS" << endl << endl;
         }
         else
         {
@@ -177,6 +179,7 @@ void testCheckInItemThatsNotCheckedOut() {
         if (string(e.what()) == "[Error]: Item is not currently checked out.")
         {
             cout << "testCheckInItemThatsNotCheckedOut: PASS" << endl;
+            cout << "Exception Received: " << e.what() << endl << endl;
         }
         else
         {
@@ -219,7 +222,7 @@ void testCheckOutMethod() {
         if ((comp->getItem() == testBook) &&
             (comp->getPerson() == borrower) &&
             (comp->getDueDate() == dueDate)) {
-            cout << "testCheckOutMethod: PASS" << endl;
+            cout << "testCheckOutMethod: PASS" << endl << endl;
         } else {
             cout << "testCheckOutMethod: FAIL" << endl;
         }
@@ -256,6 +259,7 @@ void testCheckOutItemThatsNotCheckedIn() {
         if (string(e.what()) == "[Error]: Item already checked out.")
         {
             cout << "testCheckOutItemThatsNotCheckedIn: PASS" << endl;
+            cout << "Exception Received: " << e.what() << endl << endl;
         }
         else
         {
@@ -295,7 +299,7 @@ void testSwapItemAndItem() {
     // Test if swap was successful
     cout << "testSwapItemAndItem: ";
     cout << (*testBook == *itemAtLocation11 && *testMag == *itemAtLocation00 ? "PASS" : "FAIL");
-    cout << endl;
+    cout << endl << endl;
 }
 
 void testSwapItemAndNothing() {
@@ -317,8 +321,9 @@ void testSwapItemAndNothing() {
         cout << "testSwapItemAndNothing: FAIL (no exception thrown)" << endl;
     }
     catch (const logic_error& ex1) {
-        if (string(ex1.what()) == "\n[Error]: Swap Failed. One or more compartments are empty.\n") {
+        if (string(ex1.what()) == "[Error]: Swap Failed. One or more compartments are empty.\n") {
             cout << "testSwapItemAndNothing: PASS" << endl;
+            cout << "Exception Received: " << ex1.what() << endl << endl;
         } else {
             cout << "testSwapItemAndNothing: FAIL (wrong exception: \""
                  << ex1.what() << "\" is not \"[Error]: Swap Failed. One or more compartments are empty.\"" << ")" << endl;
@@ -342,8 +347,9 @@ void testSwapNothingAndNothing() {
         cout << "testSwapNothingAndNothing: FAIL (no exception thrown)" << endl;
     }
     catch (const logic_error& ex1) {
-        if (string(ex1.what()) == "\n[Error]: Swap Failed. One or more compartments are empty.\n") {
+        if (string(ex1.what()) == "[Error]: Swap Failed. One or more compartments are empty.\n") {
             cout << "testSwapNothingAndNothing: PASS" << endl;
+            cout << "Exception Received: " << ex1.what() << endl << endl;
         } else {
             cout << "testSwapNothingAndNothing: FAIL (wrong exception: \""
                  << ex1.what() << "\" is not \"[Error]: Swap Failed. One or more compartments are empty.\"" << ")" << endl;
@@ -381,8 +387,9 @@ void testSwapItemAndCheckedOut() {
         cout << "testSwapItemAndCheckedOut: FAIL (no exception thrown)" << endl;
     }
     catch (const logic_error& ex1) {
-        if (string(ex1.what()) == "\n[Error]: Swap Failed. One or more compartments are checked out.\n") {
+        if (string(ex1.what()) == "[Error]: Swap Failed. One or more compartments are checked out.\n") {
             cout << "testSwapItemAndCheckedOut: PASS" << endl;
+            cout << "Exception Received: " << ex1.what() << endl << endl;
         } else {
             cout << "testSwapItemAndCheckedOut: FAIL (wrong exception: \""
                  << ex1.what() << "\" is not \"[Error]: Swap Failed. One or more compartments are checked out.\"" << ")" << endl;
@@ -421,8 +428,9 @@ void testSwapCheckedOutAndCheckedOut() {
         cout << "testSwapCheckedOutAndCheckedOut: FAIL (no exception thrown)" << endl;
     }
     catch (const logic_error& ex1) {
-        if (string(ex1.what()) == "\n[Error]: Swap Failed. One or more compartments are checked out.\n") {
+        if (string(ex1.what()) == "[Error]: Swap Failed. One or more compartments are checked out.\n") {
             cout << "testSwapCheckedOutAndCheckedOut: PASS" << endl;
+            cout << "Exception Received: " << ex1.what() << endl << endl;
         } else {
             cout << "testSwapCheckedOutAndCheckedOut: FAIL (wrong exception: \""
                  << ex1.what() << "\" is not \"[Error]: Swap Failed. One or more compartments are checked out.\"" << ")" << endl;

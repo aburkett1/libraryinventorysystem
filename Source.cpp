@@ -5,8 +5,8 @@
 #include "Shelf.h"
 #include "UnitTests.h"
 
-void showCasePrintCheckedInMethod();
-void showCasePrintCheckedOutMethod();
+void showcasePrintCheckedInMethod();
+void showcasePrintCheckedOutMethod();
 
 // =============================================================================
 // MARK: Main
@@ -62,11 +62,11 @@ int main()
     // =============================================================================
 
     // Print items that are checked in.
-    showCasePrintCheckedInMethod();
+    showcasePrintCheckedInMethod();
     cout << endl << endl;
 
     // Print items that are checked out.
-    showCasePrintCheckedOutMethod();
+    showcasePrintCheckedOutMethod();
     cout << endl << endl;
 
     return 0;
@@ -77,7 +77,7 @@ int main()
 // MARK: Showcase Methods
 // =============================================================================
 
-void showCasePrintCheckedInMethod() {
+void showcasePrintCheckedInMethod() {
     // Create Library
     LibraryStorage library = LibraryStorage();
     library.addShelves(2);
@@ -102,7 +102,7 @@ void showCasePrintCheckedInMethod() {
     library.printCheckedIn();
 }
 
-void showCasePrintCheckedOutMethod() {
+void showcasePrintCheckedOutMethod() {
     // Create Library
     LibraryStorage library = LibraryStorage();
     library.addShelves(2);
