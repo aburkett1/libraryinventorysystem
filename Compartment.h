@@ -8,10 +8,12 @@
 
 class Compartment {
 public:
+    // Constructors
     Compartment();
     Compartment(const Compartment& other);
     ~Compartment();
 
+    // Getters
     Item*& getItem();
     Item* getItem() const;
     string getPerson() const;
@@ -19,10 +21,12 @@ public:
     bool isEmpty() const;
     bool isCheckedIn() const;
 
+    // Setters
     void setItem(Item*& item);
     void setPerson(const string& person);
     void setDueDate(const string& dueDate);
 
+    // Overloaded Operators
     friend ostream& operator<<(ostream& out, const Compartment& compartment);
     Compartment& operator=(const Compartment& rightside);
 

@@ -1,5 +1,9 @@
 #include "Book.h"
 
+// =============================================================================
+// MARK: Constructors
+// =============================================================================
+
 Book::Book() {
     title = "";
     author = "";
@@ -13,6 +17,10 @@ Item(description) {
     this->copyrightDate = copyrightDate;
 }
 
+// =============================================================================
+// MARK: Getters
+// =============================================================================
+
 string Book::getTitle() const {
     return title;
 }
@@ -25,6 +33,10 @@ string Book::getCopyrightDate() const {
     return copyrightDate;
 }
 
+// =============================================================================
+// MARK: Setters
+// =============================================================================
+
 void Book::setTitle(const string& title) {
     this->title = title;
 }
@@ -36,6 +48,10 @@ void Book::setAuthor(const string& author) {
 void Book::setCopyrightDate(const string& copyrightDate) {
     this->copyrightDate = copyrightDate;
 }
+
+// =============================================================================
+// MARK: Overloaded Operators
+// =============================================================================
 
 ostream& operator<<(ostream& out, const Book& book) {
     // Variables

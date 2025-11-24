@@ -8,11 +8,16 @@
 void showCasePrintCheckedInMethod();
 void showCasePrintCheckedOutMethod();
 
-// ==== main ===================================================================
-//
 // =============================================================================
+// MARK: Main
+// =============================================================================
+
 int main()
 {
+    // =============================================================================
+    // MARK: Print Unit Tests
+    // =============================================================================
+
     cout << "================================" << endl;
     cout << "Unit Tests" << endl;
     cout << "================================" << endl;
@@ -52,14 +57,24 @@ int main()
     cout << endl << endl;
 
     
+    // =============================================================================
+    // MARK: Show that the print methods work.
+    // =============================================================================
+
+    // Print items that are checked in.
     showCasePrintCheckedInMethod();
     cout << endl << endl;
 
+    // Print items that are checked out.
     showCasePrintCheckedOutMethod();
     cout << endl << endl;
 
     return 0;
 } // end of main()
+// =============================================================================
+
+// =============================================================================
+// MARK: Showcase Methods
 // =============================================================================
 
 void showCasePrintCheckedInMethod() {
@@ -93,11 +108,11 @@ void showCasePrintCheckedOutMethod() {
     library.addShelves(2);
 
     //Create string for a Movie item
-    vector<string>* a = new vector<string>{"Test Actor", "Test Actress"};
+    vector<string>* actorsList = new vector<string>{"Test Actor", "Test Actress"};
 
     // Create Items
     Book* testBook = new Book("Test Title", "Test Description", "Test Author", "01/01/2025");
-    Movie* testMovie = new Movie("Test Title", "Test Description", "Test Director", a);
+    Movie* testMovie = new Movie("Test Title", "Test Description", "Test Director", actorsList);
     Magazine* testMagazine = new Magazine("Test Title", "Test Description", "Test Edition");
 
     // Add Items

@@ -1,5 +1,9 @@
 #include "Magazine.h"
 
+// =============================================================================
+// MARK: Constructors
+// =============================================================================
+
 Magazine::Magazine() {
     edition = "";
     title = "";
@@ -11,6 +15,10 @@ Item(description) {
     this->title = title;
 }
 
+// =============================================================================
+// MARK: Getters
+// =============================================================================
+
 string Magazine::getEdition() const {
     return edition;
 }
@@ -18,6 +26,10 @@ string Magazine::getEdition() const {
 string Magazine::getTitle() const {
     return title;
 }
+
+// =============================================================================
+// MARK: Setters
+// =============================================================================
 
 void Magazine::setEdition(const string& edition) {
     this->edition = edition;
@@ -27,6 +39,9 @@ void Magazine::setTitle(const string& title) {
     this->title = title;
 }
 
+// =============================================================================
+// MARK: Overloaded Operators
+// =============================================================================
 
 ostream& operator<<(ostream& out, const Magazine& magazine) {
     // Variables

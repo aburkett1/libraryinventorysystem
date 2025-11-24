@@ -1,5 +1,9 @@
 #include "Movie.h"
 
+// =============================================================================
+// MARK: Constructors
+// =============================================================================
+
 Movie::Movie() {
     title = "";
     director = "";
@@ -13,6 +17,10 @@ Item(description) {
     this->mainActors = mainActors;
 }
 
+// =============================================================================
+// MARK: Getters
+// =============================================================================
+
 string Movie::getTitle() const {
     return title;
 }
@@ -25,6 +33,10 @@ vector<string> Movie::getMainActors() const {
     return *mainActors;
 }
 
+// =============================================================================
+// MARK: Setters
+// =============================================================================
+
 void Movie::setTitle(const string& title) {
     this->title = title;
 }
@@ -36,6 +48,10 @@ void Movie::setDirector(const string& director) {
 void Movie::setMainActors(vector<string> *mainActors) {
     this->mainActors = mainActors;
 }
+
+// =============================================================================
+// MARK: Overloaded Operators
+// =============================================================================
 
 ostream& operator<<(ostream& out, const Movie& movie) {
     // Variables

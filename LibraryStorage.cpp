@@ -1,10 +1,18 @@
 #include "LibraryStorage.h"
 
+// =============================================================================
+// MARK: Constructors
+// =============================================================================
+
 LibraryStorage::~LibraryStorage() {
     for (Shelf* shelf : storage) {
         delete shelf;
     }
 }
+
+// =============================================================================
+// MARK: Utility
+// =============================================================================
 
 void LibraryStorage::addItem(Item* newItem, int shelfLocation, int compartmentLocation) {
     try
@@ -25,6 +33,14 @@ void LibraryStorage::addItem(Item* newItem, int shelfLocation, int compartmentLo
     {        
     	//re-throw so that the caller can catch and handle it
         throw;
+    }
+}
+
+void LibraryStorage::addShelves(int amount) {
+    for (int i = 0; i < amount; i++)
+    {
+        Shelf* shelf = new Shelf();
+        storage.push_back(shelf);
     }
 }
 
@@ -84,6 +100,25 @@ void LibraryStorage::checkIn(int shelfIndex, int compartmentIndex) {
     }
 }
 
+void LibraryStorage::swapItems(int item1Shelf, int item1Compartment, int item2Shelf, int item2Compartment) {
+    if ((*this)[item1Shelf][item1Compartment]->isEmpty() || (*this)[item2Shelf][item2Compartment]->isEmpty()) {
+        throw std::logic_error("\n[Error]: Swap Failed. One or more compartments are empty.\n");
+    }
+
+    if (!(*this)[item1Shelf][item1Compartment]->isCheckedIn() || !(*this)[item2Shelf][item2Compartment]->isCheckedIn()) {
+        throw std::logic_error("\n[Error]: Swap Failed. One or more compartments are checked out.\n");
+    }
+
+    // Swap compartment pointers
+    Compartment* temp = (*this)[item1Shelf][item1Compartment];
+    (*this)[item1Shelf][item1Compartment] = (*this)[item2Shelf][item2Compartment];
+    (*this)[item2Shelf][item2Compartment] = temp;
+}
+
+// =============================================================================
+// MARK: Console IO
+// =============================================================================
+
 void LibraryStorage::printCheckedIn() {
   //loop through storage
   cout << "--------------------------------" << "\n";
@@ -126,28 +161,9 @@ void LibraryStorage::printCheckedOut() {
   cout << "================================\n\n";
 }
 
-void LibraryStorage::swapItems(int item1Shelf, int item1Compartment, int item2Shelf, int item2Compartment) {
-    if ((*this)[item1Shelf][item1Compartment]->isEmpty() || (*this)[item2Shelf][item2Compartment]->isEmpty()) {
-        throw std::logic_error("\n[Error]: Swap Failed. One or more compartments are empty.\n");
-    }
-
-    if (!(*this)[item1Shelf][item1Compartment]->isCheckedIn() || !(*this)[item2Shelf][item2Compartment]->isCheckedIn()) {
-        throw std::logic_error("\n[Error]: Swap Failed. One or more compartments are checked out.\n");
-    }
-
-    // Swap compartment pointers
-    Compartment* temp = (*this)[item1Shelf][item1Compartment];
-    (*this)[item1Shelf][item1Compartment] = (*this)[item2Shelf][item2Compartment];
-    (*this)[item2Shelf][item2Compartment] = temp;
-}
-
-void LibraryStorage::addShelves(int amount) {
-    for (int i = 0; i < amount; i++)
-    {
-        Shelf* shelf = new Shelf();
-        storage.push_back(shelf);
-    }
-}
+// =============================================================================
+// MARK: Overloaded Operators
+// =============================================================================
 
 Shelf& LibraryStorage::operator[](int index) {
     if (index < 0 || index >= storage.size())

@@ -9,9 +9,11 @@ private:
     Compartment* compartments[MAX_COMPARTMENT_SIZE];
 
 public:
+    // Constructors
     Shelf();
     ~Shelf();
 
+    // Overloaded Operators
     Compartment*& operator[](int index);
     Compartment* operator[](int index) const;
 };

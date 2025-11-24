@@ -8,17 +8,22 @@ private:
     vector<Shelf*> storage;
 
 public:
+    // Constructors
     LibraryStorage() {};
     ~LibraryStorage();
 
+    // Utility
     void addItem(Item* newItem, int shelfLocation, int compartmentLocation);
     void addShelves(int amount);
     void checkOut(int shelf, int compartment, string name, string dueDate);
     void checkIn(int shelfIndex, int compartmentIndex);
-    void printCheckedIn();
-    void printCheckedOut();
     void swapItems(int item1Shelf, int item1Compartment, int item2Shelf, int item2Compartment);
 
+    // Console IO
+    void printCheckedIn();
+    void printCheckedOut();
+
+    // Overloaded Operators
     Shelf& operator[](int index);
     Shelf& operator[](int index) const;
 };

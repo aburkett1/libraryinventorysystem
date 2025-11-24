@@ -1,5 +1,9 @@
 #include "Shelf.h"
 
+// =============================================================================
+// MARK: Constructors
+// =============================================================================
+
 Shelf::Shelf() {
     for (int i = 0; i < MAX_COMPARTMENT_SIZE; i++) {
         compartments[i] = new Compartment();
@@ -11,6 +15,10 @@ Shelf::~Shelf() {
         delete compartments[i];
     }
 }
+
+// =============================================================================
+// MARK: Overloaded Operators
+// =============================================================================
 
 Compartment*& Shelf::operator[](int index) {
     if (index < 0 || index >= MAX_COMPARTMENT_SIZE)

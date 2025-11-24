@@ -1,5 +1,9 @@
 #include "UnitTests.h"
 
+// =============================================================================
+// MARK: Access Tests
+// =============================================================================
+
 void testAccessCompartmentByBracket() {
     // Create Library
     LibraryStorage library = LibraryStorage();
@@ -16,6 +20,9 @@ void testAccessCompartmentByBracket() {
     }
 }
 
+// =============================================================================
+// MARK: Add Item Tests
+// =============================================================================
 
 void testAddItemMethod() {
     // Create Library
@@ -101,6 +108,10 @@ void testAddItemToOutOfBounds() {
     }
 }
 
+// =============================================================================
+// MARK: Check In Tests
+// =============================================================================
+
 void testCheckInMethod() {
     // Create Library
     LibraryStorage library = LibraryStorage();
@@ -170,6 +181,10 @@ void testCheckInItemThatsNotCheckedOut() {
              << e.what() << "\" is not \"Item is not currently checked out.\"" << ")" << endl;
     }
 }
+
+// =============================================================================
+// MARK: Check Out Tests
+// =============================================================================
 
 void testCheckOutMethod() {
     try {
@@ -245,6 +260,10 @@ void testCheckOutItemThatsNotCheckedIn() {
              << e.what() << "\" is not \"Item already checked out.\"" << ")" << endl;
     }
 }
+
+// =============================================================================
+// MARK: Swap Item Tests
+// =============================================================================
 
 void testSwapItemAndItem() {
     // Create Library
